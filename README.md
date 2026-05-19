@@ -22,6 +22,12 @@ short_description: API 通知中转网关 (FastAPI + SQLite + APScheduler) MVP
 
 ![Dashboard — 前端 Vercel + 后端 HF Spaces 联调实时数据](image.png)
 
+🌐 **在线 Demo**:
+- 前端 Dashboard: https://rc-caohongwei-39jkzzvxh-benedicttoms-projects.vercel.app
+- 后端 API: https://benedicttom-rc-caohongwei.hf.space
+- 健康检查: https://benedicttom-rc-caohongwei.hf.space/healthz
+- FastAPI 文档: https://benedicttom-rc-caohongwei.hf.space/docs
+
 ---
 
 ## 一、问题理解
