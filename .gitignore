@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+build/
+dist/
+# Test / Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+# Linters
+.ruff_cache/
+.mypy_cache/
+# Local DB（含 SQLite WAL 模式产物）
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+# Env
+.env
+.env.local
+.env.*.local
+# Editor / OS / IDE 工具缓存
+.idea/
+.vscode/
+.DS_Store
+*.swp
+.qoder/
+.claude/
+# Frontend (Node / Next.js)
+web/node_modules/
+web/.next/
+web/out/
+web/tsconfig.tsbuildinfo
+web/.vercel/
+# 本地部署调试
+_local_data/
+.qoder/rules/code-auto-collection.md
+
+# 作业题目 PDF（用 api_notify.md 文字版替代，避免触发 HF Spaces 的 LFS 要求）
+api_notify.pdf

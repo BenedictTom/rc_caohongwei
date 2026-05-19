@@ -1,0 +1,48 @@
+# Provider 配置（本地 mock 模式）
+# 三个 provider 都指向 tools/mock_provider.py 起在 127.0.0.1:8500 的 echo 服务。
+# 真实接入时只需把 url 与 auth 改回外部地址。
+
+demo-crm:
+  url: "http://127.0.0.1:8500/demo-crm"
+  method: POST
+  timeout_ms: 5000
+  auth:
+    type: none
+  headers:
+    Content-Type: application/json
+    X-Source: rc_caohongwei
+  body_template: |
+    {
+      "contact_id": "{{ payload.user_id }}",
+      "status": "{{ payload.event }}",
+      "metadata": {{ payload.metadata | tojson }}
+    }
+
+demo-ad-network:
+  url: "http://127.0.0.1:8500/demo-ad-network"
+  method: POST
+  timeout_ms: 3000
+  auth:
+    type: none
+  headers:
+    Content-Type: application/json
+  body_template: |
+    {
+      "click_id": "{{ payload.click_id }}",
+      "event_type": "registration",
+      "ts": "{{ payload.ts }}"
+    }
+
+demo-inventory:
+  url: "http://127.0.0.1:8500/demo-inventory"
+  method: POST
+  timeout_ms: 5000
+  auth:
+    type: none
+  headers:
+    Content-Type: application/json
+  body_template: |
+    {
+      "sku": "{{ payload.sku }}",
+      "qty": {{ payload.qty }}
+    }

@@ -1,0 +1,32 @@
+# Fly.io 配置：单实例 + 持久化 SQLite + 同进程 mock provider。
+# 关键约束：SQLite 文件锁要求"绝对不要 autoscale 到多实例"——
+# auto_stop_machines=off + min_machines_running=1 锁死单 machine。
+# app 名首次 fly launch 时会要求确认/修改；下面 "rc-caohongwei" 是占位。
+app = "rc-caohongwei"
+primary_region = "sin"  # 新加坡，亚太离中国近；可改 nrt（东京）/hkg（香港，企业版）
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  # DATABASE_URL 在 Dockerfile 里有默认值；如需覆盖在此设置
+  PORT = "8000"
+
+# 持久化卷：SQLite 文件落在这里，重启不丢
+[[mounts]]
+  source = "data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  # 关键：SQLite 单实例锁死
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256

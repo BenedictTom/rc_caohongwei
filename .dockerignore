@@ -1,0 +1,43 @@
+# 后端镜像不需要的内容（保留 README.md 因为 pyproject.toml 引用了它）
+.git
+.gitignore
+.github
+.vscode
+.idea
+
+# 前端
+web/
+
+# 测试 / 文档 / spec
+tests/
+docs/
+openspec/
+api_notify.md
+api_notify.pdf
+
+# Python 本地痕迹
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+
+# 环境变量 / 本地数据库
+.env
+.env.local
+notifications.db
+notifications.db-shm
+notifications.db-wal
+
+# 编辑器
+*.swp
+.DS_Store
+
+# 部署相关（不需要被自己 COPY）
+Dockerfile
+.dockerignore
+fly.toml

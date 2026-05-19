@@ -1,0 +1,50 @@
+# Provider 配置示例
+# 新增供应商不需要改 Python 代码，只在此处加一条配置即可
+
+demo-crm:
+  url: "https://crm.example.com/api/contacts"
+  method: POST
+  timeout_ms: 5000
+  auth:
+    type: bearer
+    token_env: CRM_TOKEN          # 启动时校验该环境变量必须存在
+  headers:
+    Content-Type: application/json
+    X-Source: rc_caohongwei
+  body_template: |
+    {
+      "contact_id": "{{ payload.user_id }}",
+      "status": "{{ payload.event }}",
+      "metadata": {{ payload.metadata | tojson }}
+    }
+
+demo-ad-network:
+  url: "https://ads.example.com/v2/conversions"
+  method: POST
+  timeout_ms: 3000
+  auth:
+    type: header
+    name: X-Api-Key
+    token_env: AD_API_KEY
+  headers:
+    Content-Type: application/json
+  body_template: |
+    {
+      "click_id": "{{ payload.click_id }}",
+      "event_type": "registration",
+      "ts": "{{ payload.ts }}"
+    }
+
+demo-inventory:
+  url: "https://inventory.example.com/stock/decrement"
+  method: POST
+  timeout_ms: 5000
+  auth:
+    type: none
+  headers:
+    Content-Type: application/json
+  body_template: |
+    {
+      "sku": "{{ payload.sku }}",
+      "qty": {{ payload.qty }}
+    }
