@@ -20,6 +20,8 @@ short_description: API 通知中转网关 (FastAPI + SQLite + APScheduler) MVP
 **开发范式**: Spec-Driven（OpenSpec）— 先 spec、后实现
 **当前阶段**: spec 完成；后端 MVP（97 个测试通过）+ 前端 5 页面已联调通过——前端可在 `NEXT_PUBLIC_API_BASE` 指向真实后端时直连；本仓库自带本地 `tools/mock_provider.py` 让三个 demo provider 离线可达，无需任何外部环境变量
 
+![Dashboard — 前端 Vercel + 后端 HF Spaces 联调实时数据](image.png)
+
 ---
 
 ## 一、问题理解
